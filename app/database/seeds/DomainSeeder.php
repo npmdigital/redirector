@@ -20,7 +20,15 @@ class DomainSeeder extends Seeder {
 			'status' => 302,
 		]);
 		$domain->save();
-		var_dump($domain->errors()->all());
+
+		$domain = new Domain();
+		$domain->fill([
+			'name' => 'inactive.northpoint.org',
+			'redirect_url' => 'http://northpoint.org',
+			'status' => 302,
+			'active' => false,
+		]);
+		$domain->save();
 	}
 
 }

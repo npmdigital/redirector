@@ -13,7 +13,7 @@ class DomainsController extends BaseController {
 		// get domain
 		$domain = Domain::where('name','=',$_SERVER['SERVER_NAME'])
 			->first();
-		if( !$domain ) {
+		if( !$domain || !$domain->active ) {
 			App::abort(404);
 		}
 
