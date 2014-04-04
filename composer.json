@@ -1,0 +1,59 @@
+{
+	"name": "npmweb/redirector",
+	"description": "Redirector",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://dev.northpointministries.net/composer"
+		},
+		{
+			"type": "vcs",
+			"url": "https://github.com/npmweb/laravel-auth"
+		}
+	],
+	"require": {
+		"laravel/framework": "4.1.*",
+		"laravelbook/ardent": "2.3.*",
+		"components/jquery": "2.1.*",
+		"components/underscore": "1.5.*",
+		"npmweb/client-validation-generator": "dev-master@dev",
+		"npmweb/escaping": "dev-master@dev",
+		"npmweb/laravel-auth": "dev-master@dev",
+		"npmweb/middleware-client": "dev-master@dev",
+		"npmweb/npm-reference": "dev-master@dev",
+		"ezyang/htmlpurifier": "4.6.*"
+	},
+	"require-dev": {
+		"mockery/mockery": "dev-master@dev"
+	},
+	"autoload": {
+		"classmap": [
+			"app/commands",
+			"app/controllers",
+			"app/models",
+			"app/database/migrations",
+			"app/database/seeds",
+			"app/tests/TestCase.php"
+		],
+		"psr-4": {
+			"NpmWeb\\": "app/libraries/NpmWeb"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"php artisan optimize"
+		],
+		"post-update-cmd": [
+			"php artisan clear-compiled",
+			"php artisan optimize"
+		],
+		"post-create-project-cmd": [
+			"php artisan key:generate"
+		]
+	},
+	"config": {
+		"preferred-install": "dist",
+		"component-dir": "public/components"
+	},
+	"minimum-stability": "dev"
+}
