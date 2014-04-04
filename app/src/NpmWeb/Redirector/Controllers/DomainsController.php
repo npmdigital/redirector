@@ -2,6 +2,7 @@
 
 namespace NpmWeb\Redirector\Controllers;
 
+use \App;
 use \NpmWeb\Redirector\Models\Domain;
 use \NpmWeb\Redirector\Models\Hit;
 use \Redirect;
@@ -12,6 +13,9 @@ class DomainsController extends BaseController {
 		// get domain
 		$domain = Domain::where('name','=',$_SERVER['SERVER_NAME'])
 			->first();
+		if( !$domain ) {
+			App::abort(404);
+		}
 
 		// log hit
 		$hit = new Hit();
