@@ -6,13 +6,13 @@ use \LaravelBook\Ardent\Ardent;
 
 class Hit extends Ardent {
 
-	public static $rules = [
-		'domain_id' => ['required'],
-		'server_values' => ['required'],
-	];
+	public static $rules = array(
+		'domain_id' => array('required'),
+		'server_values' => array('required'),
+	);
 
-	public $fillable = [
+	public $fillable = array(
 		'domain_id', 'server_values'
-	];
+	);
 
 }

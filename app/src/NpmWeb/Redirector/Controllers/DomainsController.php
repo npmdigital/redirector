@@ -19,10 +19,10 @@ class DomainsController extends BaseController {
 
 		// log hit
 		$hit = new Hit();
-		$hit->fill([
+		$hit->fill(array(
 			'domain_id' => $domain->id,
 			'server_values' => json_encode($_SERVER)
-		]);
+		));
 		$hit->save();
 
 		// redirect to destination
