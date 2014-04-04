@@ -13,18 +13,7 @@
 	],
 	"require": {
 		"laravel/framework": "4.1.*",
-		"laravelbook/ardent": "2.4.*",
-		"components/jquery": "2.1.*",
-		"components/underscore": "1.5.*",
-		"npmweb/client-validation-generator": "dev-master@dev",
-		"npmweb/escaping": "dev-master@dev",
-		"npmweb/laravel-auth": "dev-master@dev",
-		"npmweb/middleware-client": "dev-master@dev",
-		"npmweb/npm-reference": "dev-master@dev",
-		"ezyang/htmlpurifier": "4.6.*"
-	},
-	"require-dev": {
-		"mockery/mockery": "dev-master@dev"
+		"laravelbook/ardent": "2.4.*"
 	},
 	"autoload": {
 		"classmap": [
@@ -50,8 +39,7 @@
 		]
 	},
 	"config": {
-		"preferred-install": "dist",
-		"component-dir": "public/components"
+		"preferred-install": "dist"
 	},
 	"minimum-stability": "dev"
 }

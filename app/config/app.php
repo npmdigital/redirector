@@ -107,10 +107,6 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// custom
-		'NpmWeb\ClientValidationGenerator\Laravel\HtmlServiceProvider',
-		'NpmWeb\Reference\Laravel\ReferenceServiceProvider',
-		'NpmWeb\MiddlewareClient\Laravel\MiddlewareClientServiceProvider',
-		'NpmWeb\Auth\AuthServiceProvider',
 
 	),
 
