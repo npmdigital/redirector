@@ -48,10 +48,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => 'w3mysql2.northpointministries.net',
 			'database'  => 'l_redirector',
 			'username'  => 'l_redirector',
-			'password'  => 'l_redirector',
+			'password'  => 'GjAdy2TSDJwUh7WZ',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
