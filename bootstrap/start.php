@@ -34,10 +34,12 @@ $env = $app->detectEnvironment(function() {
     global $defaultEnvironment, $domainMapping;
 
     $hostname = gethostname();
-    foreach( $domainMapping as $env => $regexArray ) {
-        foreach( $regexArray as $regex ) {
-            if( preg_match($regex,$hostname) ) {
-                return $env;
+    if( isset($domainMapping) ) {
+        foreach( $domainMapping as $env => $regexArray ) {
+            foreach( $regexArray as $regex ) {
+                if( preg_match($regex,$hostname) ) {
+                    return $env;
+                }
             }
         }
     }
