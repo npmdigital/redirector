@@ -1,15 +1,17 @@
-<?php
+<?php namespace NpmWeb\Redirector\Models;
 
-namespace NpmWeb\Redirector\Models;
+use NpmWeb\LaravelBase\Models\BaseModel;
 
-use \LaravelBook\Ardent\Ardent;
+class Domain extends BaseModel {
 
-class Domain extends Ardent {
+    public static $rules = array(
+        'name' => array('required','max:100'),
+        'redirect_url' => array('required','max:300'),
+        'status' => array('required','integer','in:301,302'),
+    );
 
-	public static $rules = array(
-		'name' => array('required','max:100'),
-		'redirect_url' => array('required','max:300'),
-		'status' => array('required','integer','in:301,302'),
-	);
+    public function scopeMatching($query, $domain) {
+        return $query->whereRaw('? LIKE CONCAT(\'%\',name)', [$domain]);
+    }
 
 }
