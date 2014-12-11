@@ -24,18 +24,24 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(function() {
-	global $defaultEnvironment, $domainMapping;
+// default-default: if run from command line
+if( !isset($defaultEnvironment) ) {
+    global $defaultEnvironment;
+    $defaultEnvironment = 'backend-local';
+}
 
-	$hostname = gethostname();
-	foreach( $domainMapping as $env => $regexArray ) {
-		foreach( $regexArray as $regex ) {
-			if( preg_match($regex,$hostname) ) {
-				return $env;
-			}
-		}
-	}
-	return $defaultEnvironment;
+$env = $app->detectEnvironment(function() {
+    global $defaultEnvironment, $domainMapping;
+
+    $hostname = gethostname();
+    foreach( $domainMapping as $env => $regexArray ) {
+        foreach( $regexArray as $regex ) {
+            if( preg_match($regex,$hostname) ) {
+                return $env;
+            }
+        }
+    }
+    return $defaultEnvironment;
 });
 
 /*
