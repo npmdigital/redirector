@@ -17,12 +17,14 @@ class DomainsController extends BaseController {
         }
 
         // log hit
-        $hit = new Hit();
-        $hit->fill(array(
+        $data = array(
             'domain_id' => $domain->id,
             'server_values' => json_encode($_SERVER)
-        ));
-        $hit->save();
+        );
+        if( isset($_SERVER['HTTP_REFERER']) ) {
+            $data['referer'] = $_SERVER['HTTP_REFERER'];
+        }
+        Hit::create($data);
 
         // redirect to destination
         return Redirect::to(
