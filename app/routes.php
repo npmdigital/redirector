@@ -12,7 +12,7 @@
 */
 
 App::missing(function($e) {
-	return '404 Not found';
+    return '404 Not found';
 });
 
 Route::get('/', 'NpmWeb\Redirector\Controllers\DomainsController@index');
