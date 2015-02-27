@@ -19,7 +19,8 @@ class DomainsController extends BaseController {
         // log hit
         $data = array(
             'domain_id' => $domain->id,
-            'server_values' => json_encode($_SERVER)
+            'server_values' => json_encode($_SERVER),
+            'path' => $_SERVER['REQUEST_URI'],
         );
         if( isset($_SERVER['HTTP_REFERER']) ) {
             $data['referer'] = $_SERVER['HTTP_REFERER'];

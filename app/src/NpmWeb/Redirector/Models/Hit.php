@@ -8,10 +8,11 @@ class Hit extends BaseModel {
         'domain_id' => array('required'),
         'server_values' => array('required'),
         'referer' => array('max:200'),
+        'path' => array('required','max:200'),
     );
 
     public $fillable = array(
-        'domain_id', 'server_values', 'referer',
+        'domain_id', 'server_values', 'referer', 'path',
     );
 
 }
