@@ -4,8 +4,9 @@
 // class Domain extends BaseModel {
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
-class Domain extends Eloquent
+class Domain extends Model
 {
 
     protected $fillable = ['name', 'redirect_url', 'status', 'active'];
