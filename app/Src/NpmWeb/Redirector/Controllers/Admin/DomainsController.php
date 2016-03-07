@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Redirect;
 use NpmWeb\Redirector\Controllers\BaseController;
 use NpmWeb\Redirector\Models\Domain;
-
-class DomainsController extends BaseController
+use App\Http\Controllers\Controller;
+class DomainsController extends Controller
 {
 
     public function index()

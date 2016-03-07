@@ -6,8 +6,8 @@ use \App;
 use \NpmWeb\Redirector\Models\Domain;
 use \NpmWeb\Redirector\Models\Hit;
 use \Redirect;
-
-class DomainsController extends BaseController
+use App\Http\Controllers\Controller;
+class DomainsController extends Controller
 {
 
     public function index()
