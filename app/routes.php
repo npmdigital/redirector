@@ -15,5 +15,13 @@ App::missing(function($e) {
     return '404 Not found';
 });
 
+Route::group(['prefix' => 'admin', 'namespace' => 'NpmWeb\Redirector\Controllers\Admin'], function() {
+    Route::get('/', ['as' => 'login'], function() {
+        return 'admin';
+    });
+
+    Route::resource('domains', 'DomainsController');
+});
+
 Route::any('{all}', 'NpmWeb\Redirector\Controllers\DomainsController@index')
     ->where('all', '.*');

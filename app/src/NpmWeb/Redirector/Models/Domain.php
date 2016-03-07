@@ -1,8 +1,13 @@
 <?php namespace NpmWeb\Redirector\Models;
 
-use NpmWeb\LaravelBase\Models\BaseModel;
+// use NpmWeb\LaravelBase\Models\BaseModel;
+// class Domain extends BaseModel {
 
-class Domain extends BaseModel {
+use Illuminate\Database\Eloquent\Model as Eloquent;
+
+class Domain extends Eloquent {
+
+    protected $fillable = ['name', 'redirect_url', 'status', 'active'];
 
     public static $rules = array(
         'name' => array('required','max:100'),
