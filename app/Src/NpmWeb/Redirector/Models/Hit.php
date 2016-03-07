@@ -2,7 +2,8 @@
 
 use NpmWeb\LaravelBase\Models\BaseModel;
 
-class Hit extends BaseModel {
+class Hit extends BaseModel
+{
 
     public static $rules = array(
         'domain_id' => array('required'),
@@ -14,5 +15,4 @@ class Hit extends BaseModel {
     public $fillable = array(
         'domain_id', 'server_values', 'referer', 'path',
     );
-
 }

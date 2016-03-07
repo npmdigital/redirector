@@ -7,12 +7,14 @@ use \NpmWeb\Redirector\Models\Domain;
 use \NpmWeb\Redirector\Models\Hit;
 use \Redirect;
 
-class DomainsController extends BaseController {
+class DomainsController extends BaseController
+{
 
-    public function index() {
+    public function index()
+    {
         $domain = Domain::matching($_SERVER['SERVER_NAME'])
             ->first();
-        if( !$domain || !$domain->active ) {
+        if (!$domain || !$domain->active) {
             App::abort(404);
         }
 
@@ -22,7 +24,7 @@ class DomainsController extends BaseController {
             'server_values' => json_encode($_SERVER),
             'path' => $_SERVER['REQUEST_URI'],
         );
-        if( isset($_SERVER['HTTP_REFERER']) ) {
+        if (isset($_SERVER['HTTP_REFERER'])) {
             $data['referer'] = $_SERVER['HTTP_REFERER'];
         }
         Hit::create($data);
@@ -33,5 +35,4 @@ class DomainsController extends BaseController {
             $domain->status
         );
     }
-
 }

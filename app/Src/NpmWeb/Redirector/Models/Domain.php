@@ -5,7 +5,8 @@
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Domain extends Eloquent {
+class Domain extends Eloquent
+{
 
     protected $fillable = ['name', 'redirect_url', 'status', 'active'];
 
@@ -15,8 +16,8 @@ class Domain extends Eloquent {
         'status' => array('required','integer','in:301,302'),
     );
 
-    public function scopeMatching($query, $domain) {
+    public function scopeMatching($query, $domain)
+    {
         return $query->whereRaw('? LIKE CONCAT(\'%\',name)', [$domain]);
     }
-
 }

@@ -11,12 +11,12 @@
 |
 */
 
-App::missing(function($e) {
+App::missing(function ($e) {
     return '404 Not found';
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'NpmWeb\Redirector\Controllers\Admin'], function() {
-    Route::get('/', ['as' => 'login'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'NpmWeb\Redirector\Controllers\Admin'], function () {
+    Route::get('/', ['as' => 'login'], function () {
         return 'admin';
     });
 
