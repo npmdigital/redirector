@@ -2,7 +2,7 @@
 
 @section('content')
 
-	{{ link_to('security', 'back') }}
+	{!! link_to('security', 'back') !!}
 
 	<h2>Cross-Site Scripting</h2>
 
@@ -24,8 +24,8 @@
 
 	<h4>Examples (view source)</h4>
 
-	<p>{{ "Attempting to hack...<script>console.log('Body: this should not be stopped.')</script>" }}</p>
-	<p>{{ esc_body("Attempting to hack...<script>console.log('Body: this should be stopped.')</script>") }}</p>
+	<p>{!! "Attempting to hack...<script>console.log('Body: this should not be stopped.')</script>" !!}</p>
+	<p>{!! esc_body("Attempting to hack...<script>console.log('Body: this should be stopped.')</script>") !!}</p>
 
 	<h3>Attribute</h3>
 
@@ -35,15 +35,15 @@
 
 	<h4>Examples (view source)</h4>
 
-	<p><a href="#" title="{{ 'Attempting to hack..." onmouseover="console.log(\'Attribute: this should not be stopped.\')"' }}">Mouse Over Me</a></p>
-	<p><a href="#" title="{{ esc_attr('Attempting to hack..." onmouseover="console.log(\'Attribute: this should be stopped.\')"') }}">Mouse Over Me</a></p>
+	<p><a href="#" title="{!! 'Attempting to hack..." onmouseover="console.log(\'Attribute: this should not be stopped.\')"' !!}">Mouse Over Me</a></p>
+	<p><a href="#" title="{!! esc_attr('Attempting to hack..." onmouseover="console.log(\'Attribute: this should be stopped.\')"') !!}">Mouse Over Me</a></p>
 
 	<h3>URL</h3>
 
 	<pre>http://foo.com/search?query=@{{esc_url($var)}}</pre>
 
-	<p><a href="?param={{ 'Attempting to hack..." onmouseover="console.log(\'URL: this should not be stopped.\')"' }}">Mouse Over Me</a></p>
-	<p><a href="?param={{ esc_url('Attempting to hack..." onmouseover="console.log(\'URL: this should be stopped.\')"') }}">Mouse Over Me</a></p>
+	<p><a href="?param={!! 'Attempting to hack..." onmouseover="console.log(\'URL: this should not be stopped.\')"' !!}">Mouse Over Me</a></p>
+	<p><a href="?param={!! esc_url('Attempting to hack..." onmouseover="console.log(\'URL: this should be stopped.\')"') !!}">Mouse Over Me</a></p>
 
 	<h3>JavaScript</h3>
 
@@ -54,9 +54,9 @@
 	<h4>Examples (view source)</h4>
 
 	<script>
-		var myvar1 = "{{ 'Attempting to hack..."; console.log(\'JavaScript: this should not be stopped.\'); "' }}";
+		var myvar1 = "{!! 'Attempting to hack..."; console.log(\'JavaScript: this should not be stopped.\'); "' !!}";
 		document.write('<p>'+myvar1+'</p>');
-		var myvar2 = {{ esc_js('Attempting to hack..."; console.log(\'JavaScript: this should be stopped.\'); "') }};
+		var myvar2 = {!! esc_js('Attempting to hack..."; console.log(\'JavaScript: this should be stopped.\'); "') !!};
 		document.write('<p>'+myvar2+'</p>');
 	</script>
 
@@ -87,11 +87,11 @@
 	<h4>Examples (view source)</h4>
 	
 	<script type="application/javascript">
-		var myvar3 = {{ json_encode(array('foo'=>'Attempting to hack...<script>console.log("JSON: this should not be stopped.")</script>')) }};
+		var myvar3 = {!! json_encode(array('foo'=>'Attempting to hack...<script>console.log("JSON: this should not be stopped.")</script>')) !!};
 		document.write( '<p>'+myvar3.foo+'</p>' );
 	</script>
 
-	{{ esc_json( array('foo'=>'Attempting to hack...<script>console.log("JSON: this should be stopped.")</script>'), 'myjson' ) }}
+	{!! esc_json( array('foo'=>'Attempting to hack...<script>console.log("JSON: this should be stopped.")</script>'), 'myjson' ) !!}
 
 	<script type="application/javascript">
 		var myvar4 = document.getElementById('myjson').textContent;
@@ -111,7 +111,7 @@
 
 	<h4>Examples (view source)</h4>
 
-	<p>{{ "<b>Attempting to hack...</b><script>console.log('HTML: this should not be stopped.')</script>" }}</p>
-	<p>{{ esc_html("<b>Attempting to hack...</b><script>console.log('HTML: this should be stopped.')</script>") }}</p>
+	<p>{!! "<b>Attempting to hack...</b><script>console.log('HTML: this should not be stopped.')</script>" !!}</p>
+	<p>{!! esc_html("<b>Attempting to hack...</b><script>console.log('HTML: this should be stopped.')</script>") !!}</p>
 
 @stop

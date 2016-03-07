@@ -3,5 +3,5 @@
 @section('content')
 	hi!
 
-	Login: {{ $loginSuccess ? 'success' : 'fail' }}
+	Login: {!! $loginSuccess ? 'success' : 'fail' !!}
 @stop

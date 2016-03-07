@@ -2,15 +2,15 @@
 
 @section('content')
 
-	{{ link_to('security', 'back') }}
+	{!! link_to('security', 'back') !!}
 
 	<h2>Cross-Site Request Forgery</h2>
 
 	<h3>Secure: CSRF Token via Form Submit</h3>
 
-	{{ Form::open(array('route'=>'security.csrf')) }}
-		{{ Form::submit('Submit') }}
-	{{ Form::close() }}
+	{!! Form::open(array('route'=>'security.csrf')) !!}
+		{!! Form::submit('Submit') !!}
+	{!! Form::close() !!}
 
 	<h3>Insecure: No CSRF Token via Ajax</h3>
 
@@ -24,8 +24,8 @@
 
 @section('js')
 	<script type="text/javascript">
-		var baseUrl = {{ esc_js(url('/')) }};
-		var csrfToken = {{ esc_js(csrf_token()) }};
+		var baseUrl = {!! esc_js(url('/')) !!};
+		var csrfToken = {!! esc_js(csrf_token()) !!};
 
 		var successHandler = function(response) {
 			console.log(response);

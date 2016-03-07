@@ -19,7 +19,7 @@
   <div class="row">
     <div class="columns">
       @if(Session::get('alert'))
-        <div class="callout primary">{{ Session::get('alert') }}</div>
+        <div class="callout primary">{!! Session::get('alert') !!}</div>
       @endif
 
       @yield('content')

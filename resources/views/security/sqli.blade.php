@@ -2,7 +2,7 @@
 
 @section('content')
 	
-	{{ link_to('security', 'back') }}
+	{!! link_to('security', 'back') !!}
 
 	<h2>SQL Injection</h2>
 

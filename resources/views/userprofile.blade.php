@@ -1,5 +1,5 @@
 @extends('layout')
 
 @section('content')
-	<p>{{$user->name}}</p>
+	<p>{!!$user->name!!}</p>
 @stop

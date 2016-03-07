@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-	{{ link_to_route('registrations.create', 'Create') }}
+	{!! link_to_route('registrations.create', 'Create') !!}
 
 	<table>
 		<thead>
@@ -11,8 +11,8 @@
 		<tbody>
 			@foreach($registrations as $reg)
 				<tr>
-					<td class="id">{{ link_to_route('registrations.show', $reg->id, $reg->id ) }}</td>
-					<td class="name">{{ link_to_route('registrations.show', $reg->name, $reg->id ) }}</td>
+					<td class="id">{!! link_to_route('registrations.show', $reg->id, $reg->id ) !!}</td>
+					<td class="name">{!! link_to_route('registrations.show', $reg->name, $reg->id ) !!}</td>
 				</tr>
 			@endforeach
 		</tbody>
