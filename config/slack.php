@@ -13,7 +13,7 @@ return [
   |
   */
 
-  'endpoint' => 'https://hooks.slack.com/services/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',
+  'endpoint' => env('SLACK_ENDPOINT'),
 
   /*
   |-------------------------------------------------------------
@@ -26,7 +26,7 @@ return [
   |
   */
 
-  'channel' => '#devops',
+  'channel' => env('SLACK_CHANNEL', '#devops'),
 
   /*
   |-------------------------------------------------------------
