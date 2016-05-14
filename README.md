@@ -1,3 +1,4 @@
-## Redirector
+NPM Redirector
+==============
 
-Micro app to log and handle permanent redirects
+Micro app to log and handle redirects.
