@@ -13,7 +13,7 @@ return array(
     |
     */
 
-    'debug' => true,
+    'debug' => env('APP_DEBUG', false),
 
     'log' => 'daily',
 
@@ -101,7 +101,7 @@ return array(
         'Illuminate\View\ViewServiceProvider',
 
         // custom
-        'NpmWeb\PhpEnvLoader\Laravel\EnvLoaderServiceProvider',
+        // 'NpmWeb\PhpEnvLoader\Laravel\EnvLoaderServiceProvider',
 
         'Illuminate\Bus\BusServiceProvider',
         'Illuminate\Foundation\Providers\FoundationServiceProvider',
@@ -112,7 +112,10 @@ return array(
         'App\Providers\BusServiceProvider',
         'App\Providers\ConfigServiceProvider',
         'App\Providers\EventServiceProvider',
-        'App\Providers\RouteServiceProvider'
+        'App\Providers\RouteServiceProvider',
+
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Maknz\Slack\SlackServiceProvider::class,
     ),
 
     /*
@@ -173,13 +176,16 @@ return array(
         'View'            => 'Illuminate\Support\Facades\View',
 
         // custom
-        'Reference'     => 'NpmWeb\Reference\Laravel\Reference',
+        // 'Reference'     => 'NpmWeb\Reference\Laravel\Reference',
 
         'Bus' => 'Illuminate\Support\Facades\Bus',
         'Inspiring' => 'Illuminate\Foundation\Inspiring',
         'Storage' => 'Illuminate\Support\Facades\Storage',
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Slack' => Maknz\Slack\Facades\Slack::class,
     ),
 
 );

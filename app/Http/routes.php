@@ -11,17 +11,39 @@
 |
 */
 
-App::missing(function ($e) {
-    return '404 Not found';
+Route::get('auth/login', function() {
+    if (Auth::check()) redirect('admin/domains');
+    return \View::make('auth.login');
 });
 
-Route::group(['prefix' => 'admin', 'namespace' => 'NpmWeb\Redirector\Controllers\Admin'], function () {
-    Route::get('/', ['as' => 'login'], function () {
-        return 'admin';
-    });
+Route::post('auth/login', [
+    'as' => 'login',
+    'uses' => 'Auth\AuthController@authenticate',
+]);
 
+Route::get('auth/logout', [
+    'as' => 'logout',
+    'uses' => 'Auth\AuthController@logout',
+]);
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function () {
     Route::resource('domains', 'DomainsController');
 });
 
-Route::any('{all}', 'NpmWeb\Redirector\Controllers\DomainsController@index')
+Route::group(['prefix' => '_debugbar', 'namespace' => 'Barryvdh\Debugbar\Controllers'], function() {
+    Route::get('open', [
+        'as' => 'debugbar.openhandler',
+        'uses' => 'OpenHandlerController@handle',
+    ]);
+    Route::get('assets/stylesheets', [
+        'as' => 'debugbar.assets.css',
+        'uses' => 'AssetController@css',
+    ]);
+    Route::get('assets/javascript', [
+        'as' => 'debugbar.assets.js',
+        'uses' => 'AssetController@js',
+    ]);
+});
+
+Route::any('{all}', 'DomainsController@index')
     ->where('all', '.*');

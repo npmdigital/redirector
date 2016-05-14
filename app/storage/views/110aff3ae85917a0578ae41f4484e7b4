@@ -18,11 +18,11 @@
 <body>
   <div class="row">
     <div class="columns">
-      @if(Session::get('alert'))
-        <div class="callout primary">{!! Session::get('alert') !!}</div>
-      @endif
+      <?php if(Session::get('alert')): ?>
+        <div class="callout primary"><?php echo Session::get('alert'); ?></div>
+      <?php endif; ?>
 
-      @yield('content')
+      <?php echo $__env->yieldContent('content'); ?>
     </div>
   </div>
 </body>

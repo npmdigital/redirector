@@ -23,7 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('inspire')
-                 ->hourly();
+        $schedule->command('redirector:refresh-domains-cache')->everyFiveMinutes();
+        $schedule->command('redirector:purge-year-old-hits')->dailyAt('4:00');
     }
 }

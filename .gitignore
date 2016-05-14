@@ -2,4 +2,4 @@
 /workbench/
 /vendor/
 node_modules
-.env.json
+.env
