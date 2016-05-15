@@ -26,19 +26,20 @@ class Domain extends Eloquent
     {
         $yearAgo = Carbon::now()->subYears(1)->toDateString();
 
-        // select d.*, COUNT(*) as hits
+        // select d.*, COUNT(DISTINCT h.id) as hits
         // from domains as d
-        // join hits as h on h.domain_id = d.id
-        // where h.created_at >= '2015-05-13'
+        // left join hits as h on d.id = h.domain_id
+        // where h.created_at >= '2016-05-13' or h.created_at is null
         // group by d.id
-        // order by d.name asc;
+        // order by d.name;
 
         return DB::table('domains as d')
-                   ->select(['d.*', DB::raw('COUNT(h.id) AS hits')])
-                   ->join('hits AS h', 'h.domain_id', '=', 'd.id')
+                   ->select(['d.*', DB::raw('COUNT(DISTINCT h.id) AS hits')])
+                   ->leftJoin('hits AS h', 'h.domain_id', '=', 'd.id')
                    ->where('h.created_at', '>=', $yearAgo)
-                   ->groupBy('d.name')
-                   ->orderBy('d.name', 'ASC');
+                   ->orWhere('h.created_at', '=', null)
+                   ->groupBy('d.id')
+                   ->orderBy('d.name');
     }
 
     public function scopeFindWithHits($query, $id)
