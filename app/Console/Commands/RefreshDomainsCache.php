@@ -40,7 +40,9 @@ class RefreshDomainsCache extends Command {
 	 */
 	public function fire()
 	{
-        $domains = Cache::remember('domains', Carbon::now()->addMinutes(10), function()
+        Cache::forget('domains');
+
+        Cache::remember('domains', Carbon::now()->addMinutes(10), function()
         {
             return Domain::domainsWithHits()->get();
         });

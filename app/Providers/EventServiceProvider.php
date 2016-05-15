@@ -1,6 +1,7 @@
 <?php namespace App\Providers;
 
 use App\Models\Domain;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -31,11 +32,11 @@ class EventServiceProvider extends ServiceProvider
         /**
          * Refresh the domains list cache when Domain is saved/updated/deleted
          */
-        Domain::saved(function($domain)
+        Domain::created(function($domain)
         {
             Artisan::call('redirector:refresh-domains-cache');
         });
-        Domain::updated(function($domain)
+        Domain::saved(function($domain)
         {
             Artisan::call('redirector:refresh-domains-cache');
         });
