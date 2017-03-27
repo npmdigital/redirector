@@ -1,5 +1,5 @@
 {
-    "name": "npmweb/redirector",
+    "name": "npmdigital/redirector",
     "description": "Redirector",
     "require": {
         "laravel/framework": "5.0.*",
